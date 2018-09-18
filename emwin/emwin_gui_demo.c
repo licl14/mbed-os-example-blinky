@@ -322,17 +322,14 @@ int main_emwin(void)
     printf("GUI demo start.\r\n");
 	  BOARD_ConfigMPU();
     BOARD_InitPins();
-//    BOARD_InitI2C1Pins();
+    BOARD_InitI2C1Pins();
     BOARD_InitSemcPins();
     BOARD_BootClockRUN();
     BOARD_InitLcdifPixelClock();
-//    BOARD_InitDebugConsole();
+    BOARD_InitDebugConsole();
     BOARD_InitLcd();
 
-    printf("GUI demo gui_init.\r\n");
-
     GUI_Init();
-    printf("GUI demo 1.\r\n");
     CHECKBOX_SetDefaultFont(GUI_NORMAL_FONT);
     DROPDOWN_SetDefaultFont(GUI_NORMAL_FONT);
     MULTIPAGE_SetDefaultFont(GUI_NORMAL_FONT);
@@ -396,7 +393,7 @@ int main_emwin(void)
         PROGBAR_CreateEx(GUI_SCALE_RECT(60, 10, 200, 40), hPageWin, WM_CF_SHOW, PROGBAR_CF_HORIZONTAL, GUI_ID_PROGBAR0);
     PROGBAR_SetFont(hProgbar0, GUI_LARGE_FONT);
     PROGBAR_SetValue(hProgbar0, 50);
-    printf("GUI demo 2.\r\n");
+		
     WM_SetDesktopColor(GUI_WHITE);
     WM_Exec();
     printf("GUI demo into while.\r\n");
@@ -405,8 +402,8 @@ int main_emwin(void)
     {
         /* Poll touch controller for update */
 
-//        if (BOARD_Touch_Poll())
-//        {
+        if (BOARD_Touch_Poll())
+        {
 #ifdef GUI_BUFFERS
             GUI_MULTIBUF_Begin();
 #endif
@@ -414,8 +411,7 @@ int main_emwin(void)
 #ifdef GUI_BUFFERS
             GUI_MULTIBUF_End();
 #endif
-			 wait_ms(10);
-//        }
+        }
 
     }
 }
