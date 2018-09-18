@@ -98,7 +98,7 @@
 #define MBED_CONF_PLATFORM_FORCE_NON_COPYABLE_ERROR                           0                                                                                                // set by library:platform
 #define MBED_CONF_PLATFORM_MAX_ERROR_FILENAME_LEN                             16                                                                                               // set by library:platform
 #define MBED_CONF_PLATFORM_POLL_USE_LOWPOWER_TIMER                            0                                                                                                // set by library:platform
-#define MBED_CONF_PLATFORM_STDIO_BAUD_RATE                                    9600                                                                                             // set by library:platform
+#define MBED_CONF_PLATFORM_STDIO_BAUD_RATE                                    115200                                                                                             // set by library:platform
 #define MBED_CONF_PLATFORM_STDIO_BUFFERED_SERIAL                              0                                                                                                // set by library:platform
 #define MBED_CONF_PLATFORM_STDIO_CONVERT_NEWLINES                             0                                                                                                // set by library:platform
 #define MBED_CONF_PLATFORM_STDIO_CONVERT_TTY_NEWLINES                         0                                                                                                // set by library:platform
@@ -119,6 +119,7 @@
 // Macros
 #define NS_USE_EXTERNAL_MBED_TLS                                                                                                                                               // defined by library:nanostack
 #define UNITY_INCLUDE_CONFIG_H                                                                                                                                                 // defined by library:utest
-#define _RTE_                                                                                                                                                                  // defined by library:rtos
-
+#define _RTE_   
+//Smart OS                                                                                                                                                              // defined by library:rtos
+#define CONFIG_MEDIA_EMWIN                                                     1
 #endif

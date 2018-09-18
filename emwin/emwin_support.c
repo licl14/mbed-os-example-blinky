@@ -95,11 +95,12 @@ static volatile int32_t s_LCDpendingBuffer = -1;
  ******************************************************************************/
 
 /* Enable interrupt. */
-#if 0
+#ifdef CONFIG_MEDIA_EMWIN//clli
 void BOARD_EnableLcdInterrupt(void)
 {
     EnableIRQ(LCDIF_IRQn);
 }
+
 
 void APP_LCDIF_IRQHandler(void)
 {
@@ -158,7 +159,7 @@ void APP_ELCDIF_Init(void)
     NVIC_EnableIRQ(LCDIF_IRQn);
     ELCDIF_RgbModeStart(APP_ELCDIF);
 }
-#endif
+#endif//emwin clli
 /*******************************************************************************
  * Implementation of communication with the touch controller
  ******************************************************************************/
@@ -233,7 +234,7 @@ void LCD_X_Config(void)
 #if (LCD_BITS_PER_PIXEL == 8)
     LCD_SetLUT(&_aPalette_256);
 #endif
-    BOARD_Touch_Init();
+    //BOARD_Touch_Init();
 }
 
 int LCD_X_DisplayDriver(unsigned LayerIndex, unsigned Cmd, void *p)
@@ -244,7 +245,7 @@ int LCD_X_DisplayDriver(unsigned LayerIndex, unsigned Cmd, void *p)
     uint32_t color;
 #endif
     int result = 0;
-	  printf("LCD_X_DisplayDriver\n");
+	  //printf("LCD_X_DisplayDriver %u\n",Cmd);
     LCD_X_SHOWBUFFER_INFO *pData;
     switch (Cmd)
     {
@@ -265,7 +266,8 @@ int LCD_X_DisplayDriver(unsigned LayerIndex, unsigned Cmd, void *p)
             //
             s_LCDpendingBuffer = pData->Index;
             while (s_LCDpendingBuffer >= 0)
-                ;
+						//{printf("while\n\r");}
+						;
             return 0;
         }
 #if (LCD_BITS_PER_PIXEL == 8)

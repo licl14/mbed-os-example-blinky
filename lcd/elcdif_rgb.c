@@ -87,6 +87,7 @@ AT_NONCACHEABLE_SECTION_ALIGN(static uint32_t s_frameBuffer[2][APP_IMG_HEIGHT][A
 /*******************************************************************************
  * Code
  ******************************************************************************/
+ #ifndef  CONFIG_MEDIA_EMWIN //clli
 extern void APP_LCDIF_IRQHandler(void);
 
 void LCDIF_IRQHandler(void)
@@ -99,7 +100,7 @@ void BOARD_EnableLcdInterrupt(void)
 {
     EnableIRQ(LCDIF_IRQn);
 }
-
+#endif
 /* Initialize the LCD_DISP. */
 void BOARD_InitLcd(void)
 {
@@ -158,6 +159,7 @@ void BOARD_InitLcdifPixelClock(void)
     CLOCK_SetDiv(kCLOCK_LcdifDiv, 1);
 }
 
+#ifndef  CONFIG_MEDIA_EMWIN //clli
 
 void APP_LCDIF_IRQHandler(void)
 {
@@ -177,7 +179,6 @@ void APP_LCDIF_IRQHandler(void)
     __DSB();
 #endif
 }
-
 void APP_ELCDIF_Init(void)
 {
     const elcdif_rgb_mode_config_t config = {
@@ -197,7 +198,7 @@ void APP_ELCDIF_Init(void)
 
     ELCDIF_RgbModeInit(APP_ELCDIF, &config);
 }
-
+#endif //emwin clli
 void APP_FillFrameBuffer(uint32_t frameBuffer[APP_IMG_HEIGHT][APP_IMG_WIDTH])
 {
     /* Background color. */

@@ -400,12 +400,13 @@ int main_emwin(void)
     WM_SetDesktopColor(GUI_WHITE);
     WM_Exec();
     printf("GUI demo into while.\r\n");
-		
+
     while (1)
     {
         /* Poll touch controller for update */
-        if (BOARD_Touch_Poll())
-        {
+
+//        if (BOARD_Touch_Poll())
+//        {
 #ifdef GUI_BUFFERS
             GUI_MULTIBUF_Begin();
 #endif
@@ -413,6 +414,8 @@ int main_emwin(void)
 #ifdef GUI_BUFFERS
             GUI_MULTIBUF_End();
 #endif
-        }
+			 wait_ms(10);
+//        }
+
     }
 }
