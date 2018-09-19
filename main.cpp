@@ -1,5 +1,5 @@
 #include "mbed.h"
-#include "lcd/elcdif_rgb.h"
+//#include "lcd/elcdif_rgb.h"
 #include "emwin/emwin_gui_demo.h"
 //#include <stdio.h>
 DigitalOut led1(LED1);
