@@ -87,7 +87,7 @@ AT_NONCACHEABLE_SECTION_ALIGN(static uint32_t s_frameBuffer[2][APP_IMG_HEIGHT][A
 /*******************************************************************************
  * Code
  ******************************************************************************/
- #ifndef  CONFIG_MEDIA_EMWIN //clli
+ #ifdef  CONFIG_MEDIA_LCD //clli
 extern void APP_LCDIF_IRQHandler(void);
 
 void LCDIF_IRQHandler(void)
@@ -100,7 +100,7 @@ void BOARD_EnableLcdInterrupt(void)
 {
     EnableIRQ(LCDIF_IRQn);
 }
-#endif
+//#endif
 /* Initialize the LCD_DISP. */
 void BOARD_InitLcd(void)
 {
@@ -158,8 +158,6 @@ void BOARD_InitLcdifPixelClock(void)
 
     CLOCK_SetDiv(kCLOCK_LcdifDiv, 1);
 }
-
-#ifndef  CONFIG_MEDIA_EMWIN //clli
 
 void APP_LCDIF_IRQHandler(void)
 {

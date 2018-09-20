@@ -1,6 +1,8 @@
 #include "mbed.h"
 #include "lcd/elcdif_rgb.h"
 #include "emwin/emwin_gui_demo.h"
+#include "sdcard/device/sd_jpeg.h"
+#include "sdcard/host/fatfs_sdcard.h"
 //#include <stdio.h>
 DigitalOut led1(LED1);
 
@@ -67,7 +69,8 @@ int sysinfo()
 void lcd_display(void){
 	printf("lcd_display \n");
 		//main_lcd();
-	  main_emwin();
+	  //main_emwin();
+	  main_sdcard_host();
 }
 void Led_splink(void){
 	  printf("Led_splink \n");
@@ -85,7 +88,7 @@ int main() {
 	  printf("main \n\r");
 //		Thread Thd_Lcd;
 		Thread Thd_Led;
-	  Thd_Lcd = new Thread(osPriorityNormal, OS_STACK_SIZE, NULL, "emwin");
+	  Thd_Lcd = new Thread(osPriorityRealtime7, OS_STACK_SIZE*4, NULL, "emwin");
 	  Thd_Lcd->start(lcd_display);
     Thd_Led.start(Led_splink);
 #if defined(MBED_THREAD_STATS_ENABLED)
