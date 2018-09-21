@@ -234,7 +234,7 @@ void LCD_X_Config(void)
 #if (LCD_BITS_PER_PIXEL == 8)
     LCD_SetLUT(&_aPalette_256);
 #endif
-    //BOARD_Touch_Init();
+    BOARD_Touch_Init();
 }
 
 int LCD_X_DisplayDriver(unsigned LayerIndex, unsigned Cmd, void *p)
