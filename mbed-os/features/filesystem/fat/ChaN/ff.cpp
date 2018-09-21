@@ -21,7 +21,7 @@
 
 #include "ff.h"			/* Declarations of FatFs API */
 #include "diskio.h"		/* Declarations of device I/O functions */
-
+#include "stdio.h"
 
 /*--------------------------------------------------------------------------
 
@@ -3240,10 +3240,11 @@ FRESULT find_volume (	/* FR_OK(0): successful, !=0: any error occurred */
 	*rfs = 0;
 	vol = get_ldnumber(path);
 	if (vol < 0) return FR_INVALID_DRIVE;
-
 	/* Check if the filesystem object is valid or not */
 	fs = FatFs[vol];					/* Get pointer to the filesystem object */
+
 	if (!fs) return FR_NOT_ENABLED;		/* Is the filesystem object available? */
+	printf("fatfs call\n");
 #if FF_FS_REENTRANT
 	if (!lock_fs(fs)) return FR_TIMEOUT;	/* Lock the volume */
 #endif
@@ -5581,7 +5582,7 @@ FRESULT f_mkfs (
 	au /= ss;	/* Cluster size in unit of sector */
 
 	/* Get working buffer */
-#if FF_USE_LFN == 3 || FF_FS_HEAPBUF
+#if FF_USE_LFN == 3 //|| FF_FS_HEAPBUF//clli
 	if (!work) {	/* Use heap memory for working buffer */
 		for (szb_buf = MAX_MALLOC, buf = 0; szb_buf >= ss && !(buf = (BYTE *)ff_memalloc(szb_buf)); szb_buf /= 2) ;
 		sz_buf = szb_buf / ss;		/* Size of working buffer (sector) */

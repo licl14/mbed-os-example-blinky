@@ -185,7 +185,7 @@ static DWORD disk_get_sector_count(BYTE pdrv)
     MBED_ASSERT(scount >= 64);
     return scount;
 }
-
+#if 0 //clli
 DSTATUS disk_status(BYTE pdrv)
 {
     debug_if(FFS_DBG, "disk_status on pdrv [%d]\n", pdrv);
@@ -270,7 +270,7 @@ DRESULT disk_ioctl(BYTE pdrv, BYTE cmd, void *buff)
     return RES_PARERR;
 }
 
-
+#endif
 ////// Generic filesystem operations //////
 
 // Filesystem implementation (See FATFilySystem.h)

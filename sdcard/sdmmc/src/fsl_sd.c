@@ -1590,7 +1590,7 @@ status_t SD_CardInit(sd_card_t *card)
     }
 
     /* Check card's supported interface condition. */
-    if (kStatus_Success == SD_SendInterfaceCondition(card))
+    if (0)//(kStatus_Success == SD_SendInterfaceCondition(card))
     {
         /* SDHC or SDXC card */
         applicationCommand41Argument |= kSD_OcrHostCapacitySupportFlag;
@@ -1605,11 +1605,12 @@ status_t SD_CardInit(sd_card_t *card)
         }
     }
     /* Set card interface condition according to SDHC capability and card's supported interface condition. */
+#if 0
     if (kStatus_Success != SD_ApplicationSendOperationCondition(card, applicationCommand41Argument))
     {
         return kStatus_SDMMC_HandShakeOperationConditionFailed;
     }
-
+#endif
     /* check if card support 1.8V */
     if ((card->flags & kSD_SupportVoltage180v))
     {

@@ -1,10 +1,13 @@
+#ifndef _FFCONF_H_
+#define _FFCONF_H_
 /*---------------------------------------------------------------------------/
 /  FatFs - Configuration file
 /---------------------------------------------------------------------------*/
 
 #define FFCONF_DEF 89352	/* Revision ID */
 
-#define FFS_DBG			0
+#define FFS_DBG			1
+#define SD_DISK_ENABLE
 
 /*---------------------------------------------------------------------------/
 / Function Configurations
@@ -27,7 +30,7 @@
 /   3: f_lseek() function is removed in addition to 2. */
 
 
-#define FF_USE_STRFUNC	0
+#define FF_USE_STRFUNC	1
 /* This option switches string functions, f_gets(), f_putc(), f_puts() and f_printf().
 /
 /  0: Disable string functions.
@@ -70,7 +73,7 @@
 / Locale and Namespace Configurations
 /---------------------------------------------------------------------------*/
 
-#define FF_CODE_PAGE	437
+#define FF_CODE_PAGE	932
 /* This option specifies the OEM code page to be used on the target system.
 /  Incorrect code page setting can cause a file open failure.
 /
@@ -99,7 +102,7 @@
 */
 
 
-#define FF_USE_LFN		3
+#define FF_USE_LFN		0
 #define FF_MAX_LFN		255
 /* The FF_USE_LFN switches the support for LFN (long file name).
 /
@@ -151,7 +154,7 @@
 */
 
 
-#define FF_FS_RPATH		1
+#define FF_FS_RPATH		2
 /* This option configures support for relative path.
 /
 /   0: Disable relative path and remove related functions.
@@ -164,7 +167,7 @@
 / Drive/Volume Configurations
 /---------------------------------------------------------------------------*/
 
-#define FF_VOLUMES		4
+#define FF_VOLUMES		3
 /* Number of volumes (logical drives) to be used. (1-10) */
 
 
@@ -196,7 +199,7 @@
 /  GET_SECTOR_SIZE command. */
 
 
-#define FF_USE_TRIM		1
+#define FF_USE_TRIM		0
 /* This option switches support for ATA-TRIM. (0:Disable or 1:Enable)
 /  To enable Trim function, also CTRL_TRIM command should be implemented to the
 /  disk_ioctl() function. */
@@ -219,7 +222,7 @@
 / System Configurations
 /---------------------------------------------------------------------------*/
 
-#define FF_FS_TINY		1
+#define FF_FS_TINY		0
 /* This option switches tiny buffer configuration. (0:Normal or 1:Tiny)
 /  At the tiny configuration, size of file object (FIL) is shrinked FF_MAX_SS bytes.
 /  Instead of private sector buffer eliminated from the file object, common sector
@@ -232,7 +235,7 @@
 /  Note that enabling exFAT discards ANSI C (C89) compatibility. */
 
 
-#define FF_FS_HEAPBUF   1
+#define FF_FS_HEAPBUF   0
 /* This option enables the use of the heap for allocating buffers. Otherwise
 /  _MAX_SS sized buffers are allocated statically in relevant structures (in
 /  FATFS if _FS_TINY, otherwise in FATFS and FIL)
@@ -240,7 +243,7 @@
 /  on underlying sector size. */
 
 
-#define FF_FS_NORTC		0
+#define FF_FS_NORTC		1
 #define FF_NORTC_MON	1
 #define FF_NORTC_MDAY	1
 #define FF_NORTC_YEAR	2017
@@ -289,7 +292,7 @@
 /* #include <windows.h>	// O/S definitions  */
 
 #define FLUSH_ON_NEW_CLUSTER    0   /* Sync the file on every new cluster */
-#define FLUSH_ON_NEW_SECTOR     1   /* Sync the file on every new sector */
+#define FLUSH_ON_NEW_SECTOR     0   /* Sync the file on every new sector */
 /* Only one of these two defines needs to be set to 1. If both are set to 0
    the file is only sync when closed.
    Clusters are group of sectors (eg: 8 sectors). Flushing on new cluster means
@@ -298,3 +301,4 @@
 
 
 /*--- End of configuration options ---*/
+#endif /* _FFCONF_H_ */

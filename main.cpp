@@ -88,7 +88,7 @@ int main() {
 	  printf("main \n\r");
 //		Thread Thd_Lcd;
 		Thread Thd_Led;
-	  Thd_Lcd = new Thread(osPriorityRealtime7, OS_STACK_SIZE*4, NULL, "emwin");
+	  Thd_Lcd = new Thread(osPriorityRealtime7, OS_STACK_SIZE*8, NULL, "emwin");
 	  Thd_Lcd->start(lcd_display);
     Thd_Led.start(Led_splink);
 #if defined(MBED_THREAD_STATS_ENABLED)
