@@ -13,6 +13,7 @@
 /*------------------------------------------------------------------------*/
 /* Allocate a memory block                                                */
 /*------------------------------------------------------------------------*/
+#if 0//clli
 
 void* ff_memalloc (	/* Returns pointer to the allocated memory block (null on not enough core) */
 	UINT msize		/* Number of bytes to allocate */
@@ -32,7 +33,7 @@ void ff_memfree (
 {
 	free(mblock);	/* Free the memory block with POSIX API */
 }
-
+#endif 
 #endif
 
 

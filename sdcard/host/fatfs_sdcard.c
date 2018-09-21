@@ -40,7 +40,6 @@
 #include "diskio.h"
 #include "fsl_sd_disk.h"
 #include "board.h"
-
 #include "pin_mux.h"
 #include "clock_config.h"
 #include "fsl_common.h"
@@ -65,6 +64,8 @@ static status_t sdcardWaitCardInsert(void);
  ******************************************************************************/
 static FATFS g_fileSystem; /* File system object */
 static FIL g_fileObject;   /* File object */
+/*! @brief Card descriptor */
+sd_card_t g_sd;//clli
 
 /* @brief decription about the read/write buffer
 * The size of the read/write buffer should be a multiple of 512, since SDHC/SDXC card uses 512-byte fixed

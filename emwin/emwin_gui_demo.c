@@ -90,7 +90,7 @@ void BOARD_EnableLcdInterrupt(void);
 /*******************************************************************************
  * Code
  ******************************************************************************/
-#if 0
+#ifdef CONFIG_MEDIA_EMWIN//clli
 /* Initialize the LCD_DISP. */
 void BOARD_InitLcd(void)
 {

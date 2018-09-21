@@ -63,7 +63,7 @@ volatile uint32_t g_eventTimeMilliseconds;
 /*******************************************************************************
  * Code
  ******************************************************************************/
-#if 0 //clli
+#if 1 //clli
 void SysTick_Handler(void)
 {
 #ifdef __CA7_REV
@@ -76,7 +76,7 @@ void SDMMCEVENT_InitTimer(void)
 {
 #ifdef __CA7_REV
     /* special for i.mx6ul */
-    SystemSetupSystick(1000U, (void *)SysTick_Handler, 32U);
+    SystemSetupSystick(1000U, (void *)SysTick_Handler2, 32U);
     SystemClearSystickFlag();
 #else
     /* Set systick reload value to generate 1ms interrupt */

@@ -365,6 +365,7 @@ void SDMMCHOST_PowerOnCard(SDMMCHOST_TYPE *base, const sdmmchost_pwr_card_t *pwr
     {
 				PRINTF("\r\n SDMMCHOST_PowerOnCard 1.\r\n");	
         pwr->powerOn();
+			  PRINTF("\r\n after SDMMCHOST_PowerOnCard 1.%d\r\n",pwr->powerOnDelay_ms);
         SDMMCHOST_Delay(pwr->powerOnDelay_ms);
     }
     else

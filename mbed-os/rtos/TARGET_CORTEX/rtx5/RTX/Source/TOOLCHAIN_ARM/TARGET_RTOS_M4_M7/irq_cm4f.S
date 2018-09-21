@@ -151,7 +151,7 @@ PendSV_Handler  PROC
                 ALIGN
                 ENDP
 
-
+#if 0
 SysTick_Handler PROC
                 EXPORT   SysTick_Handler
                 IMPORT   osRtxTick_Handler
@@ -164,6 +164,6 @@ SysTick_Handler PROC
 
                 ALIGN
                 ENDP
-
+#endif
 
                 END
