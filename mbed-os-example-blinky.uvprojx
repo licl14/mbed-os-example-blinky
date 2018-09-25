@@ -7651,6 +7651,16 @@
               <FileType>5</FileType>
               <FilePath>.\emwin\emwin_gui_demo.h</FilePath>
             </File>
+            <File>
+              <FileName>WindowDLG.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\emwin\WindowDLG.c</FilePath>
+            </File>
+            <File>
+              <FileName>imxrt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\emwin\imxrt.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

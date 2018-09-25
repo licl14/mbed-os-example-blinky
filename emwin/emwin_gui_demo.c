@@ -51,7 +51,9 @@
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
-
+extern WM_HWIN CreateWindow(void);
+extern GUI_CONST_STORAGE GUI_BITMAP bmimxrt;
+#if 0
 #ifndef GUI_NORMAL_FONT
 #define GUI_NORMAL_FONT (&GUI_Font16_ASCII)
 #endif
@@ -81,7 +83,7 @@
 #define GUI_ID_DRAWAREA (GUI_ID_USER + 0)
 #define GUI_ID_PAGEWIN1 (GUI_ID_USER + 1)
 #define GUI_ID_PAGEWIN2 (GUI_ID_USER + 2)
-
+#endif
 /*******************************************************************************
  * Prototypes
  ******************************************************************************/
@@ -154,7 +156,7 @@ void BOARD_InitLcdifPixelClock(void)
 }
 #endif
 
-
+#if 0
 static DROPDOWN_Handle hDropdown0;
 static RADIO_Handle hRadio0;
 static CHECKBOX_Handle hCheck0;
@@ -313,7 +315,7 @@ static void cbPageWin2(WM_MESSAGE *pMsg)
             break;
     }
 }
-
+#endif
 /*!
  * @brief Main function
  */
@@ -330,6 +332,7 @@ int main_emwin(void)
     BOARD_InitLcd();
 
     GUI_Init();
+#if 0
     CHECKBOX_SetDefaultFont(GUI_NORMAL_FONT);
     DROPDOWN_SetDefaultFont(GUI_NORMAL_FONT);
     MULTIPAGE_SetDefaultFont(GUI_NORMAL_FONT);
@@ -394,16 +397,18 @@ int main_emwin(void)
     PROGBAR_SetFont(hProgbar0, GUI_LARGE_FONT);
     PROGBAR_SetValue(hProgbar0, 50);
 		
-    WM_SetDesktopColor(GUI_WHITE);
+    WM_SetDesktopColor(GUI_RED);		
     WM_Exec();
     printf("GUI demo into while.\r\n");
-
+#endif
+		//CreateWindow();
+		GUI_DrawBitmap(&bmimxrt,0,0);
     while (1)
     {
         /* Poll touch controller for update */
 
-        if (BOARD_Touch_Poll())
-        {
+ //       if (BOARD_Touch_Poll())
+ //       {
 #ifdef GUI_BUFFERS
             GUI_MULTIBUF_Begin();
 #endif
@@ -411,7 +416,7 @@ int main_emwin(void)
 #ifdef GUI_BUFFERS
             GUI_MULTIBUF_End();
 #endif
-        }
+ //       }
 
     }
 }
