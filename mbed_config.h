@@ -121,7 +121,7 @@
 #define UNITY_INCLUDE_CONFIG_H                                                                                                                                                 // defined by library:utest
 #define _RTE_   
 //Smart OS                                                                     1                                                                                         // defined by library:rtos
-#define CONFIG_MEDIA_EMWIN
+//#define CONFIG_MEDIA_EMWIN
 //#define CONFIG_MEDIA_LCD
 #define CONFIG_MEDIA_SDFAT
 #endif

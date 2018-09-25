@@ -1,8 +1,7 @@
 #include "mbed.h"
 #include "lcd/elcdif_rgb.h"
 #include "emwin/emwin_gui_demo.h"
-#include "sdcard/device/sd_jpeg.h"
-#include "sdcard/host/fatfs_sdcard.h"
+#include "sd_jpeg/sd_jpeg.h"
 //#include <stdio.h>
 DigitalOut led1(LED1);
 
@@ -70,7 +69,8 @@ void lcd_display(void){
 	printf("lcd_display \n");
 		//main_lcd();
 	  //main_emwin();
-	  main_sdcard_host();
+	  //main_sdcard_host();
+	  main_sdjpeg();
 }
 void Led_splink(void){
 	  printf("Led_splink \n");
