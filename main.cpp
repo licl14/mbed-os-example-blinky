@@ -65,7 +65,7 @@ int sysinfo()
 }
 #endif
 void lcd_display(void){
-	printf("lcd_display \n");
+	  printf("lcd_display \n");
 		//main_lcd();
 	  main_emwin();
 }
@@ -85,7 +85,7 @@ int main() {
 	  printf("main \n\r");
 //		Thread Thd_Lcd;
 		Thread Thd_Led;
-	  Thd_Lcd = new Thread(osPriorityHigh, OS_STACK_SIZE*5, NULL, "emwin");
+	  Thd_Lcd = new Thread(osPriorityHigh, OS_STACK_SIZE, NULL, "emwin");
 	  Thd_Lcd->start(lcd_display);
     Thd_Led.start(Led_splink);
 #if defined(MBED_THREAD_STATS_ENABLED)

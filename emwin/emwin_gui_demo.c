@@ -53,6 +53,7 @@
  ******************************************************************************/
 extern WM_HWIN CreateWindow(void);
 extern GUI_CONST_STORAGE GUI_BITMAP bmimxrt;
+extern GUI_CONST_STORAGE GUI_BITMAP bmbackground;
 #if 0
 #ifndef GUI_NORMAL_FONT
 #define GUI_NORMAL_FONT (&GUI_Font16_ASCII)
@@ -402,7 +403,12 @@ int main_emwin(void)
     printf("GUI demo into while.\r\n");
 #endif
 		//CreateWindow();
-		GUI_DrawBitmap(&bmimxrt,0,0);
+		//GUI_HMEM hMem = GUI_ALLOC_AllocZero(file_size);
+	  //char * p_get_memdev_data = (char *)GUI_ALLOC_h2p(hMem);     /* apply memory space */
+		//printf("size of pic %lu\n\r",sizeof(_acimxrt));
+//		 WM_SetDesktopColor(GUI_WHITE);
+//		 WM_Exec();
+		GUI_DrawBitmap(&bmbackground,0,0);
     while (1)
     {
         /* Poll touch controller for update */
@@ -410,11 +416,11 @@ int main_emwin(void)
  //       if (BOARD_Touch_Poll())
  //       {
 #ifdef GUI_BUFFERS
-            GUI_MULTIBUF_Begin();
+ //           GUI_MULTIBUF_Begin();
 #endif
             GUI_Exec();
 #ifdef GUI_BUFFERS
-            GUI_MULTIBUF_End();
+ //           GUI_MULTIBUF_End();
 #endif
  //       }
 
